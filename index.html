@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metastatic Cancer Detection Using PCam Dataset</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .section {
+            margin-bottom: 40px;
+        }
+        .references {
+            margin-top: 20px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <h1>Metastatic Cancer Detection Using PCam Dataset</h1>
+
+    <div class="section">
+        <h2>Introduction/Background</h2>
+        <p>Advances in medical imaging technology have enabled machine learning applications in healthcare, particularly for detecting metastatic cancer in pathology slides. This project will utilize the PatchCamelyon (PCam) dataset, which consists of small image patches from whole-slide images (WSIs). PCam offers a binary classification task aimed at detecting tumor tissue within a 32x32 pixel region.</p>
+
+        <h3>Dataset</h3>
+        <p>The PCam dataset contains 262,144 training samples, with 32,768 samples each for validation and testing. Each image is 96x96 pixels, and a label is applied based on the presence of tumor tissue in the central region. The main reason we are using this dataset is the probabilistic sampling, which ensures balance across the dataset. The dataset is available on Kaggle and is ideal for machine learning (ML) models due to its non-duplicative nature. Its features include a label for the lymph node section being cancerous (1 or 0) and an image label column with file paths to the image.</p>
+        <p><a href="https://www.kaggle.com/c/pcam-dataset" target="_blank">PCam Dataset</a></p>
+    </div>
+
+    <div class="section">
+        <h2>Problem Definition</h2>
+        <h3>Problem</h3>
+        <p>The problem is automating the identification of metastatic cancer in tissue samples. Detecting cancerous regions in pathology slides is a difficult task that currently requires a lot of time. As a result of the task being conducted by people, there is a risk of errors. These errors in manual interpretation can have grave consequences for patient outcomes.</p>
+
+        <h3>Motivation</h3>
+        <p>An automated system for cancer detection would reduce the time and effort required by pathologists while also improving diagnostic accuracy. The PCam dataset allows us to use machine learning techniques that could enhance real-world medical diagnostics. Additionally, it aligns with the trend of applying machine learning in healthcare to improve clinical patient care.</p>
+    </div>
+
+    <div class="section">
+        <h2>Methods</h2>
+        <h3>Data Preprocessing</h3>
+        <ul>
+            <li><strong>Image Resizing:</strong> All images will be resized to 96x96 pixels to ensure uniform input.</li>
+            <li><strong>Normalization:</strong> Pixel values will be scaled to standardize the dataset across all color channels using normalization techniques common in ML (such as those used in ImageNet).</li>
+            <li><strong>Data Augmentation:</strong> Random transformations like flips and rotations will be applied to artificially increase the diversity of the training set.</li>
+        </ul>
+
+        <h3>Supervised Machine Learning Algorithms</h3>
+        <ul>
+            <li><strong>Convolutional Neural Networks (CNNs):</strong> CNN architectures, such as ResNet and VGG16, are well-suited for image classification and will perform well in detecting tumors in the PCam dataset (Esteva).</li>
+            <li><strong>Random Forest:</strong> This traditional ML model will be used as a baseline to compare feature importance and model interpretability, though it’s likely to be less effective than CNNs.</li>
+            <li><strong>Support Vector Machines (SVM):</strong> SVMs, known for their binary classification capabilities, will be employed for comparison. Their performance may lag behind CNNs given the high-dimensional nature of image data (Esteva).</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Results and Discussion</h2>
+        <h3>Metrics</h3>
+        <ul>
+            <li><strong>Accuracy:</strong> The percentage of correctly classified images.</li>
+            <li><strong>Precision and Recall:</strong> These metrics handle imbalanced classes, focusing on how well the model identifies true positives and avoids false negatives.</li>
+            <li><strong>AUC-ROC:</strong> This curve will measure the model’s ability to differentiate between positive and negative classes (Stokes).</li>
+        </ul>
+
+        <h3>Project Goals</h3>
+        <p>The main goal of this project is to develop an efficient ML model that can accurately detect cancerous tissues. Ethical implications will be one of our main considerations, as this will determine if the model is deployable in clinical settings without introducing bias.</p>
+
+        <h3>Expected Results</h3>
+        <p>We expect that CNNs (Bejnordi), due to their effectiveness in image classification tasks, will outperform the more traditional methods like Random Forest and SVM. Additionally, data augmentation is likely to improve model generalization, leading to higher accuracy and better AUC-ROC scores.</p>
+    </div>
+
+    <div class="section references">
+        <h2>References (IEEE format)</h2>
+        <p>[1] H. C. Stokes, “Association of dietary cholesterol or egg consumption with incident cardiovascular disease and mortality,” JAMA, vol. 321, no. 11, pp. 1081-1095, Mar. 2019. (Online). Available: <a href="https://jamanetwork.com/journals/jama/fullarticle/2665774" target="_blank">https://jamanetwork.com/journals/jama/fullarticle/2665774</a>. (Accessed: Oct. 3, 2024).</p>
+        <p>[2] A. Esteva, et al., “Dermatologist-level classification of skin cancer with deep neural networks,” Nature, vol. 542, pp. 115-118, Feb. 2017. [Online]. Available: <a href="https://pubmed.ncbi.nlm.nih.gov/28778026/" target="_blank">https://pubmed.ncbi.nlm.nih.gov/28778026/</a>. [Accessed: Oct. 3, 2024].</p>
+        <p>[3] B. E. H. Bejnordi, et al., “Diagnostic assessment of deep learning algorithms for detection of lymph node metastases in women with breast cancer,” Nature Medicine, vol. 24, pp. 1549-1558, Oct. 2018. [Online]. Available: <a href="https://www.nature.com/articles/s41591-018-0316-z" target="_blank">https://www.nature.com/articles/s41591-018-0316-z</a>. [Accessed: Oct. 3, 2024].</p>
+    </div>
+</body>
+</html>
