@@ -3,6 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <title>Breast Cancer Diagnosis Using The Breast Cancer Wisconsin State Dataset</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .section {
+            margin-bottom: 40px;
+        }
+        .references {
+            margin-top: 20px;
+            font-size: 0.9em;
+        }
+        sheet {
+          width: 100%; 
+          height: 700px; 
+          border: none;
+        }
+    </style>
 </head>
 <body>
 
@@ -108,9 +137,6 @@
     The high recall shows that SVMs effectively detected malignant cases, which lowers the risk of false negatives.
 </p>
 
-<img src="images/svm.png" alt="SVM Confusion Matrix">
-
-
 <h4>Logistic Regression</h4>
 <p>
     <strong>Accuracy:</strong> 0.9568<br>
@@ -138,8 +164,6 @@
     The results show acceptable precision but lower recall compared to SVMs, indicating a slight trade-off in detecting malignant cases.
 </p>
 
-<img src="images/LR.png" alt="LR Confusion Matrix">
-
 <h4>Random Forest</h4>
 <p>
     <strong>Accuracy:</strong> 0.9712<br>
@@ -166,8 +190,6 @@
     <strong>Confusion Matrix Analysis:</strong><br>
     Random Forest displayed balanced recall and precision, making it suitable for general-purpose tasks while still identifying important features for further analysis.
 </p>
-
-<img src="images/RF.png" alt="RF Confusion Matrix">
 
 <h2>Conclusions</h2>
 <p>
