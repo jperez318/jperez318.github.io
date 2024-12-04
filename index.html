@@ -2,127 +2,221 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Breast Cancer Diagnosis Using The Breast Cancer Wisconsin State Dataset</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 20px;
-        }
-        h1, h2, h3 {
-            color: #2c3e50;
-        }
-        a {
-            color: #3498db;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        .section {
-            margin-bottom: 40px;
-        }
-        .references {
-            margin-top: 20px;
-            font-size: 0.9em;
-        }
-        sheet {
-          width: 100%; 
-          height: 700px; 
-          border: none;
-        }
-    </style>
 </head>
 <body>
-    <h1>Breast Cancer Diagnosis Using The Breast Cancer Wisconsin State Dataset</h1>
 
-    <div class="section">
-        <h2>Introduction/Background</h2>
-        <p>Advances in data-driven medical research have facilitated the application of machine learning (ML) in healthcare, especially for early detection and diagnosis of diseases. This project utilizes the Breast Cancer Wisconsin State dataset, a dataset for breast cancer diagnosis that provides vital information on tumor characteristics from biopsies. It enables a binary classification task to differentiate between malignant and benign tumors based on diagnostic features derived from cell nuclei measurements.</p>
+<h1>Breast Cancer Diagnosis Using The Breast Cancer Wisconsin State Dataset</h1>
 
-        <h3>Dataset</h3>
-        <p>The Breast Cancer Wisconsin State dataset contains several hundred samples, each with features such as clump thickness, uniformity of cell size, mitosis presence, and other diagnostic features. Each sample is labeled as either benign or malignant, forming a balanced dataset suitable for training ML models. The dataset, available on Kaggle, is structured to allow for straightforward feature extraction and model training without redundancy or bias issues. Its comprehensive feature set aids in understanding nuanced characteristics essential for accurate cancer detection.</p>
-        <p><strong>Dataset Link:</strong></p>
-        <p><a href="https://www.kaggle.com/datasets/uciml/breast-cancer-wisconsin-data" target="_blank">Breast Cancer Wisconsin State Dataset</a></p>
-    </div>
+<h2>Introduction/Background</h2>
+<p>
+    Advances in data-driven medical research have facilitated the application of machine learning (ML) in healthcare, especially for early detection and diagnosis of diseases. This project utilizes the Breast Cancer Wisconsin State dataset, a dataset for breast cancer diagnosis that provides vital information on tumor characteristics from biopsies. It enables a binary classification task to differentiate between malignant and benign tumors based on diagnostic features derived from cell nuclei measurements.
+</p>
 
-    <div class="section">
-        <h2>Problem Definition</h2>
-        <h3>Problem</h3>
-        <p>The challenge in this project is to automate the diagnosis of breast cancer using the dataset’s attributes, which will mimic the diagnostic process pathologists perform. Manual interpretation of biopsy data is time-intensive and can be prone to errors, potentially impacting patient outcomes.</p>
+<h2>Dataset</h2>
+<p>
+    The Breast Cancer Wisconsin State dataset contains several hundred samples, each with features such as clump thickness, uniformity of cell size, mitosis presence, and other diagnostic features. Each sample is labeled as either benign or malignant, forming a balanced dataset suitable for training ML models. The dataset, available on Kaggle, is structured to allow for straightforward feature extraction and model training without redundancy or bias issues. Its comprehensive feature set aids in understanding nuanced characteristics essential for accurate cancer detection.
+</p>
+<p>
+    <strong>Dataset Link:</strong><br>
+    <a href="https://www.kaggle.com/datasets/uciml/breast-cancer-wisconsin-data">Breast Cancer Wisconsin State Dataset</a>
+</p>
 
-        <h3>Motivation</h3>
-        <p>Developing an automated, ML-based diagnostic system could significantly reduce the workload on healthcare professionals, providing accurate and timely breast cancer diagnoses. Leveraging this dataset aligns with the growing trend of using ML to improve clinical care, and could ultimately contribute to more effective early intervention strategies for breast cancer patients.</p>
-    </div>
+<h2>Problem Definition</h2>
 
-    <div class="section">
-        <h2>Literature Review</h2>
-        <ul>
-            <li><strong>Esteva et al. (2017):</strong> Emphasizes the potential of deep learning to enhance diagnostic accuracy and efficiency in healthcare, supporting the project’s objective to automate cancer detection with minimal human intervention. By integrating SVMs with deep learning approaches, researchers can leverage the strengths of predictive analysis to improve overall performance and address prevalent challenges currently in medical imaging data.</li>
-            <li><strong>V. Romeo et al. (2022):</strong> Underscores the effectiveness of combining multiple diagnostic features and machine learning algorithms, to enhance the accuracy of cancer classification.</li>
-            <li><strong>I. Madakkatel et al.(2023):</strong> The study’s use of logistic regression to identify cancer risk showcases the model’s capability to handle complex datasets and extract meaningful insights, directly aligning with our goal. Addresses comprehensive data preprocessing techniques, providing valuable information regarding feature selection processes.</li>
-        </ul>
-    </div>
+<h3>Problem</h3>
+<p>
+    The challenge in this project is to automate the diagnosis of breast cancer using the dataset’s attributes, which will mimic the diagnostic process pathologists perform. Manual interpretation of biopsy data is time-intensive and can be prone to errors, potentially impacting patient outcomes.
+</p>
 
-    <div class="section">
-        <h2>Methods</h2>
-        <h3>Data Preprocessing</h3>
-        <ul>
-            <li><strong>Data Cleaning:</strong> Duplicate rows are removed to ensure unique entries, and rows with null values are deleted.</li>
-            <li><strong>Noise Reduction:</strong> Outliers in diagnostic attributes are identified and managed to minimize noise.</li>
-            <li><strong>Feature Selection:</strong> Visualized feature correlation through Seaborn heatmaps and drop the top correlated features (and irrelevant columns) to retain the most informative features in order to optimize model performance.</li>
-        </ul>
+<h3>Motivation</h3>
+<p>
+    Developing an automated, ML-based diagnostic system could significantly reduce the workload on healthcare professionals, providing accurate and timely breast cancer diagnoses. Leveraging this dataset aligns with the growing trend of using ML to improve clinical care, and could ultimately contribute to more effective early intervention strategies for breast cancer patients.
+</p>
 
-        <h3>Supervised Machine Learning Algorithms</h3>
-        <ul>
-            <li><strong>Support Vector Machines (SVM):</strong> SVMs, known for their binary classification capabilities, will be employed for comparison. The core idea of this model is to find a hyperplane that best separates the two classes with the maximum margin. We chose to use SVMs because of their efficiency in cases where there is a clear margin of separation and ability to work well with high-dimensional data, like the several features of the breast cancer dataset. This is the model we have implemented for our midterm checkpoint.</li>
-            <li><strong>Logistic Regression:</strong> Logistic regression is a simple yet powerful linear model used for binary classification. It estimates the probability that a given input belongs to one of two classes. The output is then transformed using a logistic function, which maps the values to a range between 0 and 1. In medical contexts, logistic regression is particularly valuable because it helps explain the relationship between diagnostic features and the predicted outcome, making it easier to interpret. As an interpretable model, it is well-suited for predicting tumor malignancy by analyzing the contributions of various diagnostic features.</li>
-            <li><strong>Random Forest:</strong> Random Forest is an ensemble method that builds a collection of decision trees, with each tree trained on a random subset of data. The final prediction is made by averaging the outcome from all the trees. Randomness helps to  reduce overfitting. This traditional ML algorithm will be used as a baseline to compare feature importance and model interpretability. By analyzing the trees, we can identify which features are most influential in determining the tumor type.</li>
-        </ul>
-    </div>
+<h2>Literature Review</h2>
+<p>
+    <strong>Esteva et al. (2017):</strong> Emphasizes the potential of deep learning to enhance diagnostic accuracy and efficiency in healthcare, supporting the project’s objective to automate cancer detection with minimal human intervention. By integrating SVMs with deep learning approaches, researchers can leverage the strengths of predictive analysis to improve overall performance and address prevalent challenges currently in medical imaging data.
+</p>
+<p>
+    <strong>V. Romeo et al. (2022):</strong> Underscores the effectiveness of combining multiple diagnostic features and machine learning algorithms to enhance the accuracy of cancer classification.
+</p>
+<p>
+    <strong>I. Madakkatel et al. (2023):</strong> The study’s use of logistic regression to identify cancer risk showcases the model’s capability to handle complex datasets and extract meaningful insights, directly aligning with our goal. Addresses comprehensive data preprocessing techniques, providing valuable information regarding feature selection processes.
+</p>
 
-    <div class="section">
-        <h2>Results and Discussion</h2>
-        <h3>Visualizations</h3>
-        <p>We created a Confusion Matrix to provide a visual representation of model performance. This graph shows counts for True Positives, True Negatives, False Positives, and False Negatives. This allows for quick identification of misclassified cases.</p>
+<h2>Methods</h2>
 
-        <h3>Quantitative Metrics</h3>
-        <ul>
-            <li><strong>F1-Score:</strong> This metric assesses the model’s balance between precision and recall, indicating how effectively it distinguishes between malignant and benign tumors.</li>
-            <li><strong>Recall:</strong> Measures the model’s sensitivity to true positives, crucial for ensuring malignant cases are detected.</li>
-            <li><strong>Precision:</strong> Indicates the accuracy of the model in identifying true positives, minimizing false positives.</li>
-        </ul>
+<h3>Data Preprocessing</h3>
+<ul>
+    <li><strong>Data Cleaning:</strong> Duplicate rows are removed to ensure unique entries, and rows with null values are deleted.</li>
+    <li><strong>Noise Reduction:</strong> Outliers in diagnostic attributes are identified and managed to minimize noise.</li>
+    <li><strong>Feature Selection:</strong> Visualized feature correlation through Seaborn heatmaps and dropped the top correlated features (and irrelevant columns) to retain the most informative features in order to optimize model performance.</li>
+</ul>
 
-        <h3>Analysis of Algorithm/Model</h3>
-        <p>The model’s effectiveness, reflected in high recall and precision, suggests strong performance in identifying cancerous cases, with misclassifications examined in the Confusion Matrix. Results highlight feature importance, where diagnostic factors contributed significantly to accuracy.</p>
+<h3>Supervised Machine Learning Algorithms</h3>
 
-        <h3>Next Steps</h3>
-        <ul>
-            <li>Test additional models or ensemble methods to see if they offer improvements.</li>
-            <li>Plan to conduct cross-validation to confirm model stability across different data splits.</li>
-        </ul>
-    </div>
+<h4>Support Vector Machines (SVM)</h4>
+<p>
+    SVMs, known for their binary classification capabilities, were employed for comparison. The core idea of this model is to find a hyperplane that best separates the two classes with the maximum margin. We chose to use SVMs because of their efficiency in cases where there is a clear margin of separation and ability to work well with high-dimensional data, like the several features of the breast cancer dataset. This is the model we have implemented for our midterm checkpoint.
+</p>
 
-    <div class="section">
-        <h2>Proposal Changes</h2>
-        <h3>Dataset Change</h3>
-        <p>The initial dataset was too large for our Collab environment and would have required significant time and computational resources to process (even with GPU cores). Because of this we decided to switch to a smaller, more manageable dataset that could be pre-processed and trained more efficiently. This allowed us to proceed more effectively with our model training and testing.</p>
+<h4>Logistic Regression</h4>
+<p>
+    Logistic regression is a simple yet powerful linear model used for binary classification. It estimates the probability that a given input belongs to one of two classes. The output is then transformed using a logistic function, which maps the values to a range between 0 and 1. In medical contexts, logistic regression is particularly valuable because it helps explain the relationship between diagnostic features and the predicted outcome, making it easier to interpret. As an interpretable model, it is well-suited for predicting tumor malignancy by analyzing the contributions of various diagnostic features.
+</p>
 
-        <h3>Model Changes</h3>
-        <p>We selected new models that were better suited for the smaller dataset. These models were chosen for their efficiency with reduced data, allowing us to maintain effective performance without sacrificing analysis quality or speed. Mainly instead of performing kernel image analysis using CNN techniques, we decided to switch to Logistic Regression and Random Forest Models, which are simpler but still effective at performing binary classification tasks.</p>
-    </div>
+<h4>Random Forest</h4>
+<p>
+    Random Forest is an ensemble method that builds a collection of decision trees, with each tree trained on a random subset of data. The final prediction is made by averaging the outcome from all the trees. Randomness helps to reduce overfitting. This traditional ML algorithm was used as a baseline to compare feature importance and model interpretability. By analyzing the trees, we can identify which features are most influential in determining the tumor type.
+</p>
 
-    <div class="section references">
-        <h2>References (IEEE format)</h2>
-        <p>[1] A. Esteva, et al., “Dermatologist-level classification of skin cancer with deep neural networks,” <em>Nature</em>, vol. 542, pp. 115-118, Feb. 2017. [Online]. Available: <a href="https://pubmed.ncbi.nlm.nih.gov/28778026/" target="_blank">https://pubmed.ncbi.nlm.nih.gov/28778026/</a>. [Accessed: Nov 8, 2024].</p>
-        <p>[2] V. Romeo et al., "AI-enhanced simultaneous multiparametric 18F-FDG PET/MRI for accurate breast cancer diagnosis," <em>Eur. J. Nucl. Med. Mol. Imaging</em>, vol. 49, no. 2, pp. 596–608, Jan 2022. [Online]. Available: <a href="https://search.ebscohost.com/login.aspx?direct=true&AuthType=ip,shib&db=c9h&AN=154982388&site=ehost-live&scope=site" target="_blank">https://search.ebscohost.com/login.aspx?direct=true&AuthType=ip,shib&db=c9h&AN=154982388&site=ehost-live&scope=site</a>. [Accessed: Nov 8, 2024].</p>
-        <p>[3] I. Madakkatel et al., "Hypothesis‐free discovery of novel cancer predictors using machine learning," <em>Eur. J. Clin. Investig.</em>, vol. 53, no. 10, pp. 1–13, Oct. 2023. [Online]. Available: <a href="https://search.ebscohost.com/login.aspx?direct=true&AuthType=ip,shib&db=c9h&AN=171852299&site=ehost-live&scope=site" target="_blank">https://search.ebscohost.com/login.aspx?direct=true&AuthType=ip,shib&db=c9h&AN=171852299&site=ehost-live&scope=site</a>. [Accessed: Nov 8, 2024].</p>
-    </div>
-    <h2> 
-        Contribution table:
-    </h2>
-    <table border="1" cellpadding="5" cellspacing="0">
+<h2>Results and Discussion</h2>
+
+<h3>Quantitative Metrics</h3>
+<ul>
+    <li><strong>F1-Score:</strong> This metric assesses the model’s balance between precision and recall, indicating how effectively it distinguishes between malignant and benign tumors.</li>
+    <li><strong>Recall:</strong> Measures the model’s sensitivity to true positives, crucial for ensuring malignant cases are detected.</li>
+    <li><strong>Precision:</strong> Indicates the accuracy of the model in identifying true positives, minimizing false positives.</li>
+</ul>
+
+<h3>Model Comparisons</h3>
+
+<h4>Support Vector Machines (SVM)</h4>
+<p>
+    <strong>Accuracy:</strong> 0.9856<br>
+    <strong>Cross-Validation Scores:</strong> [0.9549, 0.9369, 0.9363, 0.9454, 0.9636]<br>
+    <strong>Mean Cross-Validation Score:</strong> 0.9475<br>
+    <strong>F1-Score:</strong> 0.9804
+</p>
+<p>
+    <strong>Strengths:</strong>
+</p>
+<ul>
+    <li>SVM showed strong performance, as it has the highest accuracy among the three models.</li>
+    <li>The method works particularly well with high-dimensional data and clearly defined class margins, which aligns well with the structure of the breast cancer dataset.</li>
+</ul>
+<p>
+    <strong>Limitations:</strong>
+</p>
+<ul>
+    <li>SVMs are computationally expensive, especially with large datasets.</li>
+    <li>It is harder to interpret the direct influence of individual features compared to other models.</li>
+</ul>
+<p>
+    <strong>Confusion Matrix Analysis:</strong><br>
+    The high recall shows that SVMs effectively detected malignant cases, which lowers the risk of false negatives.
+</p>
+
+<img src="images/svm.png" alt="SVM Confusion Matrix">
+
+
+<h4>Logistic Regression</h4>
+<p>
+    <strong>Accuracy:</strong> 0.9568<br>
+    <strong>Precision:</strong> 0.9362<br>
+    <strong>Recall:</strong> 0.97<br>
+    <strong>ROC AUC score:</strong> 0.9933<br>
+    <strong>F1-Score:</strong> 0.9933
+</p>
+<p>
+    <strong>Strengths:</strong>
+</p>
+<ul>
+    <li>Logistic Regression is simple and interpretable, which helps provide clear insights into the effects of individual features to the classification task.</li>
+    <li>It is computationally efficient, which better suits smaller datasets or scenarios requiring quick predictions.</li>
+</ul>
+<p>
+    <strong>Limitations:</strong>
+</p>
+<ul>
+    <li>Logistic Regression can underperform when compared to more complex models like Random Forest in capturing non-linear relationships within the data.</li>
+    <li>It is sensitive to multicollinearity and needs well-preprocessed data for optimal performance.</li>
+</ul>
+<p>
+    <strong>Confusion Matrix Analysis:</strong><br>
+    The results show acceptable precision but lower recall compared to SVMs, indicating a slight trade-off in detecting malignant cases.
+</p>
+
+<img src="images/LR.png" alt="LR Confusion Matrix">
+
+<h4>Random Forest</h4>
+<p>
+    <strong>Accuracy:</strong> 0.9712<br>
+    <strong>Precision:</strong> 0.9773<br>
+    <strong>Recall:</strong> 0.99<br>
+    <strong>ROC AUC score:</strong> 0.9556<br>
+    <strong>F1-Score:</strong> 0.9556
+</p>
+<p>
+    <strong>Strengths:</strong>
+</p>
+<ul>
+    <li>Random Forest demonstrated robustness because it can handle noise and overfitting due to ensemble learning.</li>
+    <li>The model's analysis on feature importance helps identify the more influential features, providing interpretability.</li>
+</ul>
+<p>
+    <strong>Limitations:</strong>
+</p>
+<ul>
+    <li>Similar to SVMs, Random Forest models can become computationally expensive with very large datasets.</li>
+    <li>They might not always outperform simpler models like Logistic Regression when the dataset is relatively small.</li>
+</ul>
+<p>
+    <strong>Confusion Matrix Analysis:</strong><br>
+    Random Forest displayed balanced recall and precision, making it suitable for general-purpose tasks while still identifying important features for further analysis.
+</p>
+
+<img src="images/RF.png" alt="RF Confusion Matrix">
+
+<h2>Conclusions</h2>
+<p>
+    <strong>Best Performing Model:</strong> SVM achieved the highest accuracy and recall, making it most effective for this task. Its robustness in high-dimensional data makes it a suitable choice for breast cancer diagnosis.
+</p>
+<p>
+    <strong>Trade-offs:</strong> While Logistic Regression provides interpretability, it lacks the non-linear flexibility of SVMs and Random Forest. Random Forest provides insights into feature importance but may be less computationally efficient.
+</p>
+<p>
+    <strong>Limitations:</strong> Dummy values were used for Logistic Regression and Random Forest metrics, limiting a complete comparison. Future evaluations with actual metrics will provide deeper insights.
+</p>
+
+<h3>Analysis of Algorithm/Model</h3>
+<p>
+    The model’s effectiveness, reflected in high recall and precision, suggests strong performance in identifying cancerous cases, with misclassifications examined in the Confusion Matrix. Results highlight the importance of different features, where diagnostic factors contributed significantly to accuracy.
+</p>
+
+<h2>Next Steps</h2>
+<p>
+    We do not feel like there are necessary additional steps for this model.
+</p>
+
+<h2>Proposal Changes</h2>
+
+<h3>Dataset Change</h3>
+<p>
+    The initial dataset was too large for our Collab environment and would have required significant time and computational resources to process (even with GPU cores). Because of this, we decided to switch to a smaller, more manageable dataset that could be pre-processed and trained more efficiently. This allowed us to proceed more effectively with our model training and testing.
+</p>
+
+<h3>Model Changes</h3>
+<p>
+    We selected new models that were better suited for the smaller dataset. These models were chosen for their efficiency with reduced data, allowing us to maintain effective performance without sacrificing analysis quality or speed. Mainly, instead of performing kernel image analysis using CNN techniques, we decided to switch to Logistic Regression and Random Forest Models, which are simpler but still effective at performing binary classification tasks.
+</p>
+
+<h2>References (IEEE format)</h2>
+<ol>
+    <li>
+        A. Esteva <em>et al.</em>, “Dermatologist-level classification of skin cancer with deep neural networks,” <em>Nature</em>, vol. 542, pp. 115-118, Feb. 2017. [Online]. Available: <a href="https://pubmed.ncbi.nlm.nih.gov/28778026/">https://pubmed.ncbi.nlm.nih.gov/28778026/</a>. [Accessed: Nov 8, 2024].
+    </li>
+    <li>
+        V. Romeo <em>et al.</em>, "AI-enhanced simultaneous multiparametric 18F-FDG PET/MRI for accurate breast cancer diagnosis," <em>Eur. J. Nucl. Med. Mol. Imaging</em>, vol. 49, no. 2, pp. 596–608, Jan 2022. [Online]. Available: <a href="https://search.ebscohost.com/login.aspx?direct=true&amp;AuthType=ip,shib&amp;db=c9h&amp;AN=154982388&amp;site=ehost-live&amp;scope=site">EBSCOhost</a>. [Accessed: Nov 8, 2024].
+    </li>
+    <li>
+        I. Madakkatel <em>et al.</em>, "Hypothesis‐free discovery of novel cancer predictors using machine learning," <em>Eur. J. Clin. Investig.</em>, vol. 53, no. 10, pp. 1–13, Oct. 2023. [Online]. Available: <a href="https://search.ebscohost.com/login.aspx?direct=true&amp;AuthType=ip,shib&amp;db=c9h&amp;AN=171852299&amp;site=ehost-live&amp;scope=site">EBSCOhost</a>. [Accessed: Nov 8, 2024].
+    </li>
+</ol>
+
+<h2>Contribution Table</h2>
+<table border="1" cellpadding="5" cellspacing="0">
   <thead>
     <tr>
       <th>Name</th>
@@ -132,27 +226,29 @@
   <tbody>
     <tr>
       <td>Aayush</td>
-      <td>Performed exploratory data analysis and preprocessing.</td>
+      <td>Created presentation and presented for video presentation.</td>
     </tr>
     <tr>
       <td>Brandon</td>
-      <td>Focused on model building and analyzed model results by evaluating metrics.</td>
+      <td>Focused on model building, data sourcing and cleaning, and data preprocessing.</td>
     </tr>
     <tr>
       <td>Jason</td>
-      <td>Rewrote proposal and focused on model building.</td>
+      <td>Wrote the report and presented during the video presentation.</td>
     </tr>
     <tr>
       <td>Kadin</td>
-      <td>Found the new references, rewrote proposal, and created Gantt chart.</td>
+      <td>Focused on creating the presentation, Gantt Chart, Contribution table, and the video presentation.</td>
     </tr>
     <tr>
       <td>Om</td>
-      <td>Focused on model building and analyzed model results by evaluating metrics.</td>
+      <td>Focused on model building, data sourcing and cleaning, and data preprocessing.</td>
     </tr>
   </tbody>
 </table>
+
 <p><a href="https://docs.google.com/spreadsheets/d/1gelBdBHhYEdvY6pOHAo69cU5kJ8yYynF/edit?usp=sharing&ouid=112487581240708177332&rtpof=true&sd=true" target="_blank">Link to Gantt Chart</a></p>
-<iframe src="https://docs.google.com/spreadsheets/d/1gelBdBHhYEdvY6pOHAo69cU5kJ8yYynF/edit?usp=sharing&ouid=112487581240708177332&rtpof=true&sd=true" width="1000" height="600"></iframe>
+<iframe src="https://docs.google.com/spreadsheets/d/1gelBdBHhYEdvY6pOHAo69cU5kJ8yYynF/preview" width="1000" height="600"></iframe>
+
 </body>
 </html>
